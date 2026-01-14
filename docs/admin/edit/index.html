@@ -218,7 +218,6 @@
         const result = await response.json();
         console.log("Success:", result);
         alert(`"${data.title}" successfully published to GitHub!`);
-        document.getElementById('preview').contentWindow.location.href = `/blog/editor/post.html#${slug}`;
       } catch (error) {
         console.error("Error:", error);
         alert(`Error publishing to GitHub: ${error.message}`);
