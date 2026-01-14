@@ -3,9 +3,9 @@
   "title" : "Charlie Bear",
   "subtitle" : "The dog",
   "author" : "Charlie",
-  "created" : 1721228543922,
+  "created" : 1768373778134,
   "content" : {
-    "time" : 1721228543192,
+    "time" : 1768373777062,
     "blocks" : [ {
       "id" : "7ey_yCFP3D",
       "type" : "header",
@@ -29,8 +29,16 @@
           "alignment" : "left"
         }
       }
+    }, {
+      "id" : "UdzwHZ-WAV",
+      "type" : "quote",
+      "data" : {
+        "text" : "Charles T. Bear",
+        "caption" : "",
+        "alignment" : "left"
+      }
     } ],
-    "version" : "2.30.2"
+    "version" : "2.31.1"
   },
   "properties" : { },
   "path" : "content/charlie-bear.json"
