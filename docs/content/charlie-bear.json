@@ -1,45 +1,46 @@
 {
-  "name" : "charlie-bear",
-  "title" : "Charlie Bear",
-  "subtitle" : "The dog",
-  "author" : "Charlie",
-  "created" : 1768373778134,
-  "content" : {
-    "time" : 1768373777062,
-    "blocks" : [ {
-      "id" : "7ey_yCFP3D",
-      "type" : "header",
-      "data" : {
-        "text" : "Dog&nbsp;",
-        "level" : 2
+  "title": "Charlie Bear",
+  "subtitle": "The dog",
+  "author": "Charlie",
+  "content": {
+    "time": 1768381335643,
+    "blocks": [
+      {
+        "id": "7ey_yCFP3D",
+        "type": "header",
+        "data": {
+          "text": "Dog&nbsp;",
+          "level": 2
+        },
+        "tunes": {
+          "anyTuneName": {
+            "alignment": "left"
+          }
+        }
       },
-      "tunes" : {
-        "anyTuneName" : {
-          "alignment" : "left"
+      {
+        "id": "SUvg1s84W_",
+        "type": "paragraph",
+        "data": {
+          "text": "Puppy&nbsp;"
+        },
+        "tunes": {
+          "anyTuneName": {
+            "alignment": "left"
+          }
+        }
+      },
+      {
+        "id": "UdzwHZ-WAV",
+        "type": "quote",
+        "data": {
+          "text": "Charles T. Bear",
+          "caption": "hello",
+          "alignment": "left"
         }
       }
-    }, {
-      "id" : "SUvg1s84W_",
-      "type" : "paragraph",
-      "data" : {
-        "text" : "Puppy&nbsp;"
-      },
-      "tunes" : {
-        "anyTuneName" : {
-          "alignment" : "left"
-        }
-      }
-    }, {
-      "id" : "UdzwHZ-WAV",
-      "type" : "quote",
-      "data" : {
-        "text" : "Charles T. Bear",
-        "caption" : "",
-        "alignment" : "left"
-      }
-    } ],
-    "version" : "2.31.1"
+    ],
+    "version": "2.31.1"
   },
-  "properties" : { },
-  "path" : "content/charlie-bear.json"
+  "properties": {}
 }
