@@ -160,10 +160,8 @@
           .trim()
           .replace(/\s+/g, '-');
 
-        // Create filename with current date
-        const now = new Date();
-        const dateStr = now.toISOString().split('T')[0];
-        const filename = `_posts/${dateStr}-${slug}.json`;
+        // Create filename
+        const filename = `docs/content/${slug}.json`;
 
         // Prepare the file content
         const fileContent = JSON.stringify(data, null, 2);
