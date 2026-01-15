@@ -104,7 +104,7 @@ const createEditor = function (holder) {
                          document.getElementById("author").innerText = data.author;
                          const createdEl = document.getElementById("created");
                          createdEl.innerText = getFormattedDate(+data.content.time);
-                         createdEl.dataset.timestamp = data.created;
+                         createdEl.dataset.timestamp = data.content.time;
 
                         await editor.render(data.content);
 
