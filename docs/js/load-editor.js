@@ -100,9 +100,11 @@ const createEditor = function (holder) {
                         const data = JSON.parse(text);
 
                         document.getElementById("title").innerText = data.title;
-                        document.getElementById("subtitle").innerText = data.subtitle;
-                        document.getElementById("author").innerText = data.author;
-                        document.getElementById("created").innerText = getFormattedDate(+data.created);
+                         document.getElementById("subtitle").innerText = data.subtitle;
+                         document.getElementById("author").innerText = data.author;
+                         const createdEl = document.getElementById("created");
+                         createdEl.innerText = getFormattedDate(+data.created);
+                         createdEl.dataset.timestamp = data.created;
 
                         await editor.render(data.content);
 
