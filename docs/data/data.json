@@ -1,109 +1,118 @@
 {
-  "posts" : {
-    "this-is-a-test" : {
-      "name" : "this-is-a-test",
-      "title" : "This is a test",
-      "subtitle" : "This is a subtitle",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1720131429801,
-      "properties" : { },
-      "path" : "content/this-is-a-test.json"
+  "posts": {
+    "this-is-a-test": {
+      "name": "this-is-a-test",
+      "title": "This is a test",
+      "subtitle": "This is a subtitle",
+      "author": "Full Stack Cloud Developer",
+      "created": 1720131429801,
+      "properties": {},
+      "path": "content/this-is-a-test.json"
     },
-    "this-is-another-test" : {
-      "name" : "this-is-another-test",
-      "title" : "This is another test",
-      "subtitle" : "This is another subtitle",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1720048137270,
-      "properties" : { },
-      "path" : "content/this-is-another-test.json"
+    "this-is-another-test": {
+      "name": "this-is-another-test",
+      "title": "This is another test",
+      "subtitle": "This is another subtitle",
+      "author": "Full Stack Cloud Developer",
+      "created": 1720048137270,
+      "properties": {},
+      "path": "content/this-is-another-test.json"
     },
-    "title" : {
-      "name" : "title",
-      "title" : "Title",
-      "subtitle" : "Subtitle",
-      "author" : "Author",
-      "created" : 1720129331069,
-      "properties" : {
-        "background-image" : "https://middleton.id.gov/portals/0/Homepage/MainImage.jpg"
+    "title": {
+      "name": "title",
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "author": "Author",
+      "created": 1720129331069,
+      "properties": {
+        "background-image": "https://middleton.id.gov/portals/0/Homepage/MainImage.jpg"
       },
-      "path" : "content/title.json"
+      "path": "content/title.json"
     },
-    "title-2" : {
-      "name" : "title-2",
-      "title" : "Title 2",
-      "subtitle" : "Subtitle",
-      "author" : "Author",
-      "created" : 1720417817696,
-      "properties" : {
-        "background-image" : "https://middleton.id.gov/portals/0/Homepage/MainImage.jpg"
+    "title-2": {
+      "name": "title-2",
+      "title": "Title 2",
+      "subtitle": "Subtitle",
+      "author": "Author",
+      "created": 1720417817696,
+      "properties": {
+        "background-image": "https://middleton.id.gov/portals/0/Homepage/MainImage.jpg"
       },
-      "path" : "content/title-2.json"
+      "path": "content/title-2.json"
     },
-    "new-post-test" : {
-      "name" : "new-post-test",
-      "title" : "New Post Test",
-      "subtitle" : "This is a test of the post editor that edits live posts.",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1721202070477,
-      "properties" : { },
-      "path" : "content/new-post-test.json"
+    "new-post-test": {
+      "name": "new-post-test",
+      "title": "New Post Test",
+      "subtitle": "This is a test of the post editor that edits live posts.",
+      "author": "Full Stack Cloud Developer",
+      "created": 1721202070477,
+      "properties": {},
+      "path": "content/new-post-test.json"
     },
-    "testing-background-images" : {
-      "name" : "testing-background-images",
-      "title" : "Testing Background Images",
-      "subtitle" : "This is a test for background images for new posts.",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1721246649474,
-      "properties" : { },
-      "path" : "content/testing-background-images.json"
+    "testing-background-images": {
+      "name": "testing-background-images",
+      "title": "Testing Background Images",
+      "subtitle": "This is a test for background images for new posts.",
+      "author": "Full Stack Cloud Developer",
+      "created": 1721246649474,
+      "properties": {},
+      "path": "content/testing-background-images.json"
     },
-    "charlie-bear" : {
-      "name" : "charlie-bear",
-      "title" : "Charlie Bear",
-      "subtitle" : "The dog",
-      "author" : "Charlie",
-      "created" : 1768373778134,
-      "properties" : { },
-      "path" : "content/charlie-bear.json"
+    "charlie-bear": {
+      "name": "charlie-bear",
+      "title": "Charlie Bear",
+      "subtitle": "The dog",
+      "author": "Charlie",
+      "created": 1768373778134,
+      "properties": {},
+      "path": "content/charlie-bear.json"
     },
-    "cangie-bear" : {
-      "name" : "cangie-bear",
-      "title" : "Cangie Bear",
-      "subtitle" : "the dog",
-      "author" : "me",
-      "created" : 1721231096421,
-      "properties" : {
-        "background-image" : "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg"
+    "cangie-bear": {
+      "name": "cangie-bear",
+      "title": "Cangie Bear",
+      "subtitle": "the dog",
+      "author": "me",
+      "created": 1721231096421,
+      "properties": {
+        "background-image": "https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg"
       },
-      "path" : "content/cangie-bear.json"
+      "path": "content/cangie-bear.json"
     },
-    "this-is-a-new-post" : {
-      "name" : "this-is-a-new-post",
-      "title" : "This is a New Post",
-      "subtitle" : "Testing subsequent new post right after a new post.",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1721246905205,
-      "properties" : { },
-      "path" : "content/this-is-a-new-post.json"
+    "this-is-a-new-post": {
+      "name": "this-is-a-new-post",
+      "title": "This is a New Post",
+      "subtitle": "Testing subsequent new post right after a new post.",
+      "author": "Full Stack Cloud Developer",
+      "created": 1721246905205,
+      "properties": {},
+      "path": "content/this-is-a-new-post.json"
     },
-    "rename-or-add" : {
-      "name" : "rename-or-add",
-      "title" : "Rename or add",
-      "subtitle" : "Will this rename or add an additional new file?",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1721275144013,
-      "properties" : { },
-      "path" : "content/rename-or-add.json"
+    "rename-or-add": {
+      "name": "rename-or-add",
+      "title": "Rename or add",
+      "subtitle": "Will this rename or add an additional new file?",
+      "author": "Full Stack Cloud Developer",
+      "created": 1721275144013,
+      "properties": {},
+      "path": "content/rename-or-add.json"
     },
-    "java-standalone" : {
-      "name" : "java-standalone",
-      "title" : "Java Standalone",
-      "subtitle" : "This is a test of a Java standalone application ",
-      "author" : "Full Stack Cloud Developer",
-      "created" : 1721377337766,
-      "properties" : { },
-      "path" : "content/java-standalone.json"
+    "java-standalone": {
+      "name": "java-standalone",
+      "title": "Java Standalone",
+      "subtitle": "This is a test of a Java standalone applicationÂ ",
+      "author": "Full Stack Cloud Developer",
+      "created": 1721377337766,
+      "properties": {},
+      "path": "content/java-standalone.json"
+    },
+    "test-jan-3": {
+      "name": "test-jan-3",
+      "title": "Test Jan-3",
+      "subtitle": "This is a test",
+      "author": "me",
+      "created": 1768462023615,
+      "properties": {},
+      "path": "content/test-jan-3.json"
     }
   }
 }
