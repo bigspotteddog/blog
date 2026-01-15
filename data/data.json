@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "slug": "this-is-a-test-jan-14-1",
+      "title": "This is a test Jan 14-1",
+      "subtitle": "This is a subtitle",
+      "author": "me",
+      "created": "2026-01-15T07:08:48.962Z"
+    }
+  ]
+}
