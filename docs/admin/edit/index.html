@@ -140,7 +140,7 @@
     async function updateDataJson(owner, repoName, token, slug, postData) {
       try {
         // Fetch existing data.json
-        let dataJson = { posts: [] };
+        let dataJson = { posts: {} };
         let sha = null;
 
         try {
@@ -163,23 +163,17 @@
         }
 
         // Add or update post entry
-        const postIndex = dataJson.posts.findIndex(p => p.slug === slug);
         const postEntry = {
-          slug: slug,
+          name: slug,
           title: postData.title,
           subtitle: postData.subtitle,
           author: postData.author,
-          created: new Date().toISOString()
+          created: new Date().getTime(),
+          properties: postData.properties || {},
+          path: `content/${slug}.json`
         };
 
-        if (postIndex >= 0) {
-          dataJson.posts[postIndex] = postEntry;
-        } else {
-          dataJson.posts.push(postEntry);
-        }
-
-        // Sort by date descending
-        dataJson.posts.sort((a, b) => new Date(b.created) - new Date(a.created));
+        dataJson.posts[slug] = postEntry;
 
         // Upload updated data.json
         const body = {
