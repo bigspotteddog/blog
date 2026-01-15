@@ -99,7 +99,7 @@
     "java-standalone": {
       "name": "java-standalone",
       "title": "Java Standalone",
-      "subtitle": "This is a test of a Java standalone applicationÃÂ ",
+      "subtitle": "This is a test of a Java standalone applicationÃÂÃÂ ",
       "author": "Full Stack Cloud Developer",
       "created": 1721377337766,
       "properties": {},
@@ -122,6 +122,15 @@
       "created": 1768507771238,
       "properties": {},
       "path": "content/hello-jan-15-1.json"
+    },
+    "test-jan-15-2": {
+      "name": "test-jan-15-2",
+      "title": "Test Jan 15-2",
+      "subtitle": "This is a test",
+      "author": "me",
+      "created": 1768512544213,
+      "properties": {},
+      "path": "content/test-jan-15-2.json"
     }
   }
 }
