@@ -103,7 +103,7 @@ const createEditor = function (holder) {
                          document.getElementById("subtitle").innerText = data.subtitle;
                          document.getElementById("author").innerText = data.author;
                          const createdEl = document.getElementById("created");
-                         createdEl.innerText = getFormattedDate(+data.created);
+                         createdEl.innerText = getFormattedDate(+data.content.time);
                          createdEl.dataset.timestamp = data.created;
 
                         await editor.render(data.content);
