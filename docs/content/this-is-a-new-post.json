@@ -1,25 +1,24 @@
 {
-  "name" : "this-is-a-new-post",
-  "title" : "This is a New Post",
-  "subtitle" : "Testing subsequent new post right after a new post.",
-  "author" : "Full Stack Cloud Developer",
-  "created" : 1721246905205,
-  "content" : {
-    "time" : 1721246904609,
-    "blocks" : [ {
-      "id" : "8Rzf22U2DO",
-      "type" : "paragraph",
-      "data" : {
-        "text" : "This is a test to see if a new post can be created right after a new post."
-      },
-      "tunes" : {
-        "anyTuneName" : {
-          "alignment" : "left"
+  "title": "This is a new post",
+  "subtitle": "This is the subtitle",
+  "author": "me",
+  "content": {
+    "time": 1768459742337,
+    "blocks": [
+      {
+        "id": "hu-MXHe4V_",
+        "type": "paragraph",
+        "data": {
+          "text": "This is my new blog post."
+        },
+        "tunes": {
+          "anyTuneName": {
+            "alignment": "left"
+          }
         }
       }
-    } ],
-    "version" : "2.30.2"
+    ],
+    "version": "2.31.1"
   },
-  "properties" : { },
-  "path" : "content/this-is-a-new-post.json"
+  "properties": {}
 }
