@@ -137,10 +137,8 @@
       "title": "Website Hosting",
       "subtitle": "with GitHub Pages",
       "author": "bigspotteddog",
-      "created": 1768544175307,
-      "properties": {
-        "background-image": "https://bigspotteddog.github.io/blog/imgs/github-wallpaper.png"
-      },
+      "created": 1768544329298,
+      "properties": {},
       "path": "content/website-hosting.json"
     }
   }
