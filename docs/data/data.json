@@ -131,6 +131,15 @@
       "created": 1768512544213,
       "properties": {},
       "path": "content/test-jan-15-2.json"
+    },
+    "website-hosting": {
+      "name": "website-hosting",
+      "title": "Website Hosting",
+      "subtitle": "with GitHub Pages",
+      "author": "bigspotteddog",
+      "created": 1768535282064,
+      "properties": {},
+      "path": "content/website-hosting.json"
     }
   }
 }
