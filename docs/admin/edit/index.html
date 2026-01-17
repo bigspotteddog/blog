@@ -266,9 +266,9 @@
     async function saveHtmlFile(owner, repoName, token, slug, postData) {
       try {
         // Get the entire rendered iframe document
-        const doc = document.getElementById('preview').contentDocument;
+        const doc = document.getElementById("preview").contentDocument;
         const editorHTML = doc.getElementById("editor").innerHTML;
-        const postHTML = doc.getElementById("post-template").innerHTML;
+        const postHTML = document.getElementById("post-template").innerHTML;
         const html = postHTML.replace("${replace-me}", editorHTML);
 
         // Get SHA if file exists
