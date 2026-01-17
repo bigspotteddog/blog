@@ -151,10 +151,10 @@
         const doc = document.getElementById("preview").contentDocument;
         const editorHTML = doc.getElementById("editor").innerHTML;
         const postHTML = `
-/<!DOCTYPE html>
-/<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-/<head>
+<head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
@@ -215,7 +215,7 @@
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div id="editor" class="col-md-10 col-lg-8 col-xl-7">
-          ${replace-me}
+          \${replace-me}
         </div>
       </div>
     </div>
@@ -263,9 +263,9 @@
   <script src="js/scripts.js"></script>
   <script src="js/load-editor.js"></script>
 
-/</body>
+</body>
 
-/</html>
+</html>
         `;
         const html = postHTML; // postHTML.replace("${replace-me}", editorHTML);
 
