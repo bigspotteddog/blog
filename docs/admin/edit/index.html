@@ -87,7 +87,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/editorjs-html@4.0.0/.build/edjsHTML.browser.js"></script>
+
 
   <script>
     document.getElementById("new").addEventListener("click", function (ev) {
@@ -145,10 +145,38 @@
       }
     });
 
+    // Convert Editor.js JSON to HTML manually
+    function editorJsToHtml(blocks) {
+      return blocks.map(block => {
+        switch(block.type) {
+          case 'paragraph':
+            return `<p>${block.data.text}</p>`;
+          case 'header':
+            return `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
+          case 'image':
+            return `<figure><img src="${block.data.file.url}" alt="${block.data.caption || 'Image'}"><figcaption>${block.data.caption || ''}</figcaption></figure>`;
+          case 'list':
+            const listTag = block.data.style === 'ordered' ? 'ol' : 'ul';
+            const items = block.data.items.map(item => `<li>${item.content}</li>`).join('');
+            return `<${listTag}>${items}</${listTag}>`;
+          case 'code':
+            return `<pre><code>${block.data.code}</code></pre>`;
+          case 'quote':
+            return `<blockquote><p>${block.data.text}</p><footer>${block.data.caption || ''}</footer></blockquote>`;
+          case 'delimiter':
+            return `<hr>`;
+          case 'embed':
+            return `<iframe src="${block.data.embed}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>`;
+          default:
+            return '';
+        }
+      }).join('\n');
+    }
+
     async function saveHtmlFile(owner, repoName, token, slug, postData) {
       try {
-        // Convert Editor.js JSON to HTML using editorjs-html
-        const html = edjsHTML.parse(postData.content);
+        // Convert Editor.js JSON to HTML
+        const htmlContent = editorJsToHtml(postData.content.blocks);
 
         // Create full HTML document
         const fullHtml = `<!DOCTYPE html>
@@ -174,7 +202,7 @@
   <article>
     <h1>${postData.title}</h1>
     <p><small>By ${postData.author}</small></p>
-    ${html.join('')}
+    ${htmlContent}
   </article>
 </body>
 </html>`;
