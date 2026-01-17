@@ -87,7 +87,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/editorjs-html@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/editorjs-html@4.0.0/.build/edjsHTML.browser.js"></script>
 
   <script>
     document.getElementById("new").addEventListener("click", function (ev) {
@@ -148,7 +148,6 @@
     async function saveHtmlFile(owner, repoName, token, slug, postData) {
       try {
         // Convert Editor.js JSON to HTML using editorjs-html
-        const edjsHTML = window.edjsHTML();
         const html = edjsHTML.parse(postData.content);
 
         // Create full HTML document
