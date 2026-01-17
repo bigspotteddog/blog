@@ -150,7 +150,7 @@
         // Get the entire rendered iframe document
         const doc = document.getElementById("preview").contentDocument;
         const editorHTML = doc.getElementById("editor").innerHTML;
-        const html = await fetch('/post.html').then(r => r.text());
+        const html = await fetch('/blog/post.html').then(r => r.text());
         
         // Get SHA if file exists
         let sha = null;
