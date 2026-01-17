@@ -147,34 +147,9 @@
 
     async function saveHtmlFile(owner, repoName, token, slug, postData) {
       try {
-        // Get the rendered iframe content
+        // Get the entire rendered iframe document
         const doc = document.getElementById('preview').contentDocument;
-        const articleHtml = doc.querySelector('article').innerHTML;
-        
-        // Get styles from the iframe document
-        const styleElements = Array.from(doc.querySelectorAll('style, link[rel="stylesheet"]'))
-          .map(el => el.outerHTML)
-          .join('\n');
-
-        // Create full HTML document (remove editor scripts)
-        const fullHtml = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${postData.title}</title>
-  <meta name="description" content="${postData.subtitle || ''}">
-  <meta property="og:title" content="${postData.title}">
-  <meta property="og:description" content="${postData.subtitle || ''}">
-  <meta property="og:type" content="article">
-  ${styleElements}
-</head>
-<body>
-  <article>
-    ${articleHtml}
-  </article>
-</body>
-</html>`;
+        const fullHtml = doc.documentElement.outerHTML;
 
         // Get SHA if file exists
         let sha = null;
