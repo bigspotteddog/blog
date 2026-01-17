@@ -148,27 +148,37 @@
     // Convert Editor.js JSON to HTML manually
     function editorJsToHtml(blocks) {
       return blocks.map(block => {
-        switch(block.type) {
-          case 'paragraph':
-            return `<p>${block.data.text}</p>`;
-          case 'header':
-            return `<h${block.data.level}>${block.data.text}</h${block.data.level}>`;
-          case 'image':
-            return `<figure><img src="${block.data.file.url}" alt="${block.data.caption || 'Image'}"><figcaption>${block.data.caption || ''}</figcaption></figure>`;
-          case 'list':
-            const listTag = block.data.style === 'ordered' ? 'ol' : 'ul';
-            const items = block.data.items.map(item => `<li>${item.content}</li>`).join('');
-            return `<${listTag}>${items}</${listTag}>`;
-          case 'code':
-            return `<pre><code>${block.data.code}</code></pre>`;
-          case 'quote':
-            return `<blockquote><p>${block.data.text}</p><footer>${block.data.caption || ''}</footer></blockquote>`;
-          case 'delimiter':
-            return `<hr>`;
-          case 'embed':
-            return `<iframe src="${block.data.embed}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>`;
-          default:
-            return '';
+        try {
+          switch(block.type) {
+            case 'paragraph':
+              return block.data?.text ? `<p>${block.data.text}</p>` : '';
+            case 'header':
+              return block.data?.text ? `<h${block.data.level || 2}>${block.data.text}</h${block.data.level || 2}>` : '';
+            case 'image':
+              const imgUrl = block.data?.file?.url || block.data?.url;
+              return imgUrl ? `<figure><img src="${imgUrl}" alt="${block.data?.caption || 'Image'}"><figcaption>${block.data?.caption || ''}</figcaption></figure>` : '';
+            case 'list':
+              if (!block.data?.items?.length) return '';
+              const listTag = block.data.style === 'ordered' ? 'ol' : 'ul';
+              const items = block.data.items.map(item => {
+                const content = typeof item === 'string' ? item : (item.content || '');
+                return `<li>${content}</li>`;
+              }).join('');
+              return `<${listTag}>${items}</${listTag}>`;
+            case 'code':
+              return block.data?.code ? `<pre><code>${block.data.code}</code></pre>` : '';
+            case 'quote':
+              return block.data?.text ? `<blockquote><p>${block.data.text}</p><footer>${block.data.caption || ''}</footer></blockquote>` : '';
+            case 'delimiter':
+              return `<hr>`;
+            case 'embed':
+              return block.data?.embed ? `<iframe src="${block.data.embed}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>` : '';
+            default:
+              return '';
+          }
+        } catch (e) {
+          console.warn('Error converting block:', block, e);
+          return '';
         }
       }).join('\n');
     }
