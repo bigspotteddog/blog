@@ -171,10 +171,12 @@
           // File doesn't exist, which is fine
         }
 
-        // Upload HTML file
+        // Upload HTML file - use proper UTF-8 to base64 encoding
+        const utf8Bytes = new TextEncoder().encode(fullHtml);
+        const binaryString = Array.from(utf8Bytes).map(byte => String.fromCharCode(byte)).join('');
         const body = {
           message: `Publish HTML: "${postData.title}"`,
-          content: btoa(unescape(encodeURIComponent(fullHtml))),
+          content: btoa(binaryString),
           branch: 'main'
         };
 
