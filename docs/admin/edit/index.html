@@ -145,50 +145,18 @@
       }
     });
 
-    // Convert Editor.js JSON to HTML manually
-    function editorJsToHtml(blocks) {
-      return blocks.map(block => {
-        try {
-          switch(block.type) {
-            case 'paragraph':
-              return block.data?.text ? `<p>${block.data.text}</p>` : '';
-            case 'header':
-              return block.data?.text ? `<h${block.data.level || 2}>${block.data.text}</h${block.data.level || 2}>` : '';
-            case 'image':
-              const imgUrl = block.data?.file?.url || block.data?.url;
-              return imgUrl ? `<figure><img src="${imgUrl}" alt="${block.data?.caption || 'Image'}"><figcaption>${block.data?.caption || ''}</figcaption></figure>` : '';
-            case 'list':
-              if (!block.data?.items?.length) return '';
-              const listTag = block.data.style === 'ordered' ? 'ol' : 'ul';
-              const items = block.data.items.map(item => {
-                const content = typeof item === 'string' ? item : (item.content || '');
-                return `<li>${content}</li>`;
-              }).join('');
-              return `<${listTag}>${items}</${listTag}>`;
-            case 'code':
-              return block.data?.code ? `<pre><code>${block.data.code}</code></pre>` : '';
-            case 'quote':
-              return block.data?.text ? `<blockquote><p>${block.data.text}</p><footer>${block.data.caption || ''}</footer></blockquote>` : '';
-            case 'delimiter':
-              return `<hr>`;
-            case 'embed':
-              return block.data?.embed ? `<iframe src="${block.data.embed}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>` : '';
-            default:
-              return '';
-          }
-        } catch (e) {
-          console.warn('Error converting block:', block, e);
-          return '';
-        }
-      }).join('\n');
-    }
-
     async function saveHtmlFile(owner, repoName, token, slug, postData) {
       try {
-        // Convert Editor.js JSON to HTML
-        const htmlContent = editorJsToHtml(postData.content.blocks);
+        // Get the rendered iframe content
+        const doc = document.getElementById('preview').contentDocument;
+        const articleHtml = doc.querySelector('article').innerHTML;
+        
+        // Get styles from the iframe document
+        const styleElements = Array.from(doc.querySelectorAll('style, link[rel="stylesheet"]'))
+          .map(el => el.outerHTML)
+          .join('\n');
 
-        // Create full HTML document
+        // Create full HTML document (remove editor scripts)
         const fullHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,20 +167,11 @@
   <meta property="og:title" content="${postData.title}">
   <meta property="og:description" content="${postData.subtitle || ''}">
   <meta property="og:type" content="article">
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
-    h1, h2, h3, h4, h5, h6 { margin-top: 1.5em; margin-bottom: 0.5em; }
-    p { margin: 1em 0; }
-    img { max-width: 100%; height: auto; }
-    code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
-    pre { background: #f4f4f4; padding: 12px; border-radius: 4px; overflow-x: auto; }
-  </style>
+  ${styleElements}
 </head>
 <body>
   <article>
-    <h1>${postData.title}</h1>
-    <p><small>By ${postData.author}</small></p>
-    ${htmlContent}
+    ${articleHtml}
   </article>
 </body>
 </html>`;
