@@ -84,7 +84,73 @@
     </div>
   </div>
 
-  <template id="post-template">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+
+  <script>
+    document.getElementById("new").addEventListener("click", function (ev) {
+      document.getElementById('preview').contentWindow.location.href = '/blog/post.html#new';
+    });
+
+    const propertiesModal = new bootstrap.Modal(document.getElementById("properties-modal"), {});
+    document.getElementById("properties").addEventListener("click", function (ev) {
+      propertiesModal.show();
+    });
+
+    document.getElementById("properties-modal").addEventListener('hidden.bs.modal', ev => {
+      const doc = document.getElementById('preview').contentDocument;
+      const current = doc.querySelector("header.masthead").style.backgroundImage;
+      const backgroundImage = document.getElementById("background-image-url").value;
+
+      if (!current.includes(backgroundImage)) {
+        doc.querySelector("header.masthead").style.backgroundImage = `url(${backgroundImage})`;
+      }
+
+      console.log(ev);
+    });
+
+    document.getElementById("publish").addEventListener("click", function (ev) {
+      const doc = document.getElementById('preview').contentDocument;
+      const el = doc.getElementById('editor');
+      if (el) {
+        const editor = el.editor;
+
+        editor.save().then(savedData => {
+          const title = doc.getElementById("title").innerText;
+          const subtitle = doc.getElementById("subtitle").innerText;
+          const author = doc.getElementById("author").innerText;
+          const content = savedData;
+
+          const backgroundImage = document.getElementById("background-image-url").value;
+
+          let properties = document.getElementById("properties-editor").value || "{}";
+          properties = JSON.parse(properties);
+
+          if (backgroundImage) {
+            properties['background-image'] = backgroundImage;
+          }
+
+          // Get created timestamp - either from existing post or current time for new posts
+          let created = new Date().getTime();
+          const createdEl = doc.getElementById("created");
+          if (createdEl && createdEl.dataset.timestamp) {
+            created = parseInt(createdEl.dataset.timestamp);
+          }
+
+          const data = { title: title, subtitle: subtitle, author: author, content: content, properties: properties, created: created };
+          publishToGitHub(data);
+        });
+      }
+    });
+
+    async function saveHtmlFile(owner, repoName, token, slug, postData) {
+      try {
+        // Get the entire rendered iframe document
+        const doc = document.getElementById("preview").contentDocument;
+        const editorHTML = doc.getElementById("editor").innerHTML;
+        const postHTML = `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -200,76 +266,8 @@
 </body>
 
 </html>
-  </template>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-
-
-  <script>
-    document.getElementById("new").addEventListener("click", function (ev) {
-      document.getElementById('preview').contentWindow.location.href = '/blog/post.html#new';
-    });
-
-    const propertiesModal = new bootstrap.Modal(document.getElementById("properties-modal"), {});
-    document.getElementById("properties").addEventListener("click", function (ev) {
-      propertiesModal.show();
-    });
-
-    document.getElementById("properties-modal").addEventListener('hidden.bs.modal', ev => {
-      const doc = document.getElementById('preview').contentDocument;
-      const current = doc.querySelector("header.masthead").style.backgroundImage;
-      const backgroundImage = document.getElementById("background-image-url").value;
-
-      if (!current.includes(backgroundImage)) {
-        doc.querySelector("header.masthead").style.backgroundImage = `url(${backgroundImage})`;
-      }
-
-      console.log(ev);
-    });
-
-    document.getElementById("publish").addEventListener("click", function (ev) {
-      const doc = document.getElementById('preview').contentDocument;
-      const el = doc.getElementById('editor');
-      if (el) {
-        const editor = el.editor;
-
-        editor.save().then(savedData => {
-          const title = doc.getElementById("title").innerText;
-          const subtitle = doc.getElementById("subtitle").innerText;
-          const author = doc.getElementById("author").innerText;
-          const content = savedData;
-
-          const backgroundImage = document.getElementById("background-image-url").value;
-
-          let properties = document.getElementById("properties-editor").value || "{}";
-          properties = JSON.parse(properties);
-
-          if (backgroundImage) {
-            properties['background-image'] = backgroundImage;
-          }
-
-          // Get created timestamp - either from existing post or current time for new posts
-          let created = new Date().getTime();
-          const createdEl = doc.getElementById("created");
-          if (createdEl && createdEl.dataset.timestamp) {
-            created = parseInt(createdEl.dataset.timestamp);
-          }
-
-          const data = { title: title, subtitle: subtitle, author: author, content: content, properties: properties, created: created };
-          publishToGitHub(data);
-        });
-      }
-    });
-
-    async function saveHtmlFile(owner, repoName, token, slug, postData) {
-      try {
-        // Get the entire rendered iframe document
-        const doc = document.getElementById("preview").contentDocument;
-        const editorHTML = doc.getElementById("editor").innerHTML;
-        const postHTML = document.getElementById("post-template").innerHTML;
-        const html = postHTML.replace("${replace-me}", editorHTML);
+        `;
+        const html = postHTML; // postHTML.replace("${replace-me}", editorHTML);
 
         // Get SHA if file exists
         let sha = null;
